@@ -10,7 +10,7 @@ Common GitHub commands
 - Commit changes
   - git commit -m "meaningful message"
 - Configure remote repository on GitHub
-  - git add remote origin <url>
+  - git remote add origin URL
 - Push chnages to remote repository
   - git push -u origin master
 - Pull changes from remote repository
@@ -20,4 +20,4 @@ Common GitHub commands
 - Check change history
   - git log
 - Clone a repository on GitHub
-  - git clone <url>
+  - git clone URL
