@@ -11,7 +11,7 @@ Common GitHub commands
   - git commit -m "meaningful message"
 - Configure remote repository on GitHub
   - git remote add origin URL
-- Push chnages to remote repository
+- Push changes to remote repository
   - git push -u origin master
 - Pull changes from remote repository
   - git pull origin
