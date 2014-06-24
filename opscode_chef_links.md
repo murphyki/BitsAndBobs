@@ -6,6 +6,10 @@ Opscode Chef Documentation
 ============================
 - http://docs.opscode.com/
 
+OpsCode Chef Concepts
+============================
+- http://learn.getchef.com/concepts/
+
 Opscode Management Console
 ===============================
 - https://manage.opscode.com/login
