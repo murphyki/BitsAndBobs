@@ -19,4 +19,4 @@ To install chef-client on a vagrant vm, install the vagrant-omnibus plgin as fol
 Then add the following line to Vagrantfile:
   config.omnibus.chef_version = :latest
 
-The next time 'vagrant up' is run the chef-client will be installed.
+Then run 'vagrant provision' and the chef-client will be installed.
