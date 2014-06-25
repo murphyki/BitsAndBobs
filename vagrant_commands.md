@@ -23,3 +23,5 @@ Then add the following line to Vagrantfile:
   config.omnibus.chef_version = :latest
 
 Then run 'vagrant provision' and the chef-client will be installed.
+
+For details on the vagrant-omnibus plugin visit: https://github.com/schisamo/vagrant-omnibus
