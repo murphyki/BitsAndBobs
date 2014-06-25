@@ -12,6 +12,9 @@ Common Vagrant commands
 - vagrant provision
 - vagrant plugin install <plugin_name>
 
+Check out the Vagrant docs for more: http://docs.vagrantup.com/v2/
+
+
 NOTE:
 To install chef-client on a vagrant vm, install the vagrant-omnibus plgin as follows:
   vagrant plugin install vagrant-omnibus
