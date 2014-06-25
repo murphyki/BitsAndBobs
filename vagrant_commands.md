@@ -3,6 +3,10 @@ Vagrant Commands
 Common Vagrant commands
 
 - vagrant --help
+- vagrant --version
+- vagrant version (prints current and latest version)
+- vagrant status
+- vagrant ssh (ssh to the vm)
 - vagrant init (generate a new Vagrantfile)
 - vagrant up
 - vagrant halt
@@ -10,7 +14,8 @@ Common Vagrant commands
 - vagrant suspend
 - vagrant resume
 - vagrant provision
-- vagrant plugin install <plugin_name>
+- vagrant destroy
+- vagrant plugin install [plugin_name]
 
 Check out the Vagrant docs for more: http://docs.vagrantup.com/v2/
 
