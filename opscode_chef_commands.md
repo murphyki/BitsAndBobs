@@ -1,9 +1,19 @@
 Chef Commands
 =============================
 Common Chef commands
-
-- knife --help
-- knife --version
-- knife client list
-- knife node list
-- knife node show NODE
+```
+knife --help
+knife --version
+knife client list
+knife node list
+knife node show NODE
+```
+Download and use a cookbook from the community site http://community.opscode.com/
+```
+tar -xzvf COOKBOOK_NAME.tar.gz -C cookbooks
+knife cookbook site download COOKBOOK_NAME
+```
+Upload a cookbook to the Chef server
+```
+knife cookbook upload COOKBOOK_NAME
+```
