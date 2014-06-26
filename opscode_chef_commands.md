@@ -21,6 +21,6 @@ Edit node properties
 ```
 knife node edit NODE
 ```
-NOTE: ensure EDITOR environment varibale is set: ```export EDITOR=vim```
-knife uses the $EDITOR variable for loading an editor program
+NOTE: ensure EDITOR environment variable is set: ```export EDITOR=vim```
+knife uses the ```$EDITOR``` variable for loading an editor program
 
