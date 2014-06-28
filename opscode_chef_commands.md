@@ -24,3 +24,7 @@ knife node edit NODE
 NOTE: ensure EDITOR environment variable is set: ```export EDITOR=vim```
 knife uses the ```$EDITOR``` variable for loading an editor program
 
+Create a new cookbook
+```
+knife cookbook create COOKBOOK_NAME
+```
