@@ -28,3 +28,13 @@ Create a new cookbook
 ```
 knife cookbook create COOKBOOK_NAME
 ```
+
+Create a new role
+```
+knife role create ROLE_NAME
+```
+NOTE: roles are stored as JSON files under the roles folder
+Can also create roles from a JSON file
+```
+knife role from file FILE_NAME
+```
