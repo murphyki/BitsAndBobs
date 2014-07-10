@@ -39,3 +39,7 @@ Clone a repository on GitHub
 ```
 git clone URL
 ```
+Discard changes
+```
+git checkout -- FILE_NAME
+```
