@@ -8,6 +8,10 @@ knife client list
 knife node list
 knife node show NODE
 ```
+Configure knife to talk to chef server
+```
+knife configure --initial
+```
 Download and use a cookbook from the community site http://community.opscode.com/
 ```
 tar -xzvf COOKBOOK_NAME.tar.gz -C cookbooks
