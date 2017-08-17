@@ -52,6 +52,9 @@ Vagrant.configure("2") do |config|
     apt-get install -y filezilla
     apt-get install -y atom
     apt-get install -y sublime-text-installer
+    apt-get install -y php
+    apt-get install -y libapache2-mod-php
+    apt-get install -y php-cli
  
     if [ ! -d "/opt/idea-IU-172.3544.35" ]; then
       wget -O /opt/ideaIU-2017.2.1-no-jdk.tar.gz https://download.jetbrains.com/idea/ideaIU-2017.2.1-no-jdk.tar.gz
