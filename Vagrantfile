@@ -90,5 +90,6 @@ Vagrant.configure("2") do |config|
     nvm install --lts node
     #npm install --global bower
     #npm install --global grunt-cli
+    #npm install --global @angular/cli
   SHELL
 end
