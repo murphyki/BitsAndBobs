@@ -88,6 +88,7 @@ Vagrant.configure("2") do |config|
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
     . ~/.nvm/nvm.sh
     nvm install --lts node
+    npm install --global npm@latest
     #npm install --global bower
     #npm install --global grunt-cli
     #npm install --global @angular/cli
