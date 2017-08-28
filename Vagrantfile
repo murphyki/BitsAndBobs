@@ -24,7 +24,7 @@ Vagrant.configure("2") do |config|
      vb.gui = true
  
      # Customize the amount of memory on the VM:
-     vb.memory = "4096"
+     vb.memory = "6144"
  
      # Name the vm
      vb.name = "my_dev_vm"
