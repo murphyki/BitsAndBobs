@@ -14,6 +14,9 @@ vagrant version (prints current and latest version)
 vagrant status
 ```
 ```
+vagrant global-status
+```
+```
 vagrant ssh (ssh to the vm)
 ```
 ```
