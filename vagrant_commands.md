@@ -23,7 +23,13 @@ vagrant ssh (ssh to the vm)
 vagrant init (generate a new Vagrantfile)
 ```
 ```
+vagrant box list
+```
+```
 vagrant box add <box_name>
+```
+```
+vagrant box remove <box_name>
 ```
 ```
 vagrant up
