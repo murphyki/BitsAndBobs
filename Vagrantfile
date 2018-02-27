@@ -46,51 +46,72 @@ Vagrant.configure("2") do |config|
     echo debconf shared/accepted-oracle-license-v1-1 seen true | sudo debconf-set-selections
     apt-get install -y oracle-java8-installer
  
-    # note: git and python already installed on base box...
-    apt-get install -y python-pip
+    # Install python (more than likely already on base box) and pip
+    apt-get install -y python python-dev python-setuptools build-essential
+    apt-get install -y python-pip # or easy_install pip
+
+    apt-get install -y php libapache2-mod-php php-cli
     apt-get install -y terminator
     apt-get install -y filezilla
     apt-get install -y atom
     apt-get install -y sublime-text-installer
-    apt-get install -y php
-    apt-get install -y libapache2-mod-php
-    apt-get install -y php-cli
- 
-    if [ ! -d "/opt/idea-IU-172.3544.35" ]; then
-      wget -O /opt/ideaIU-2017.2.1-no-jdk.tar.gz https://download.jetbrains.com/idea/ideaIU-2017.2.1-no-jdk.tar.gz
-      cd /opt && tar -zxvf ideaIU-2017.2.1-no-jdk.tar.gz
-      rm -f ideaIU-2017.2.1-no-jdk.tar.gz
-      echo 'export PATH=/opt/idea-IU-172.3544.35/bin:$PATH' >> /home/vagrant/.bashrc
-    fi
- 
-    if [ ! -d "/opt/pycharm-community-2017.2.1" ]; then
-      wget -O /opt/pycharm-community-2017.2.1.tar.gz https://download.jetbrains.com/python/pycharm-community-2017.2.1.tar.gz
-      cd /opt && tar -zxvf pycharm-community-2017.2.1.tar.gz
-      rm -f pycharm-community-2017.2.1.tar.gz
-      echo 'export PATH=/opt/pycharm-community-2017.2.1/bin:$PATH' >> /home/vagrant/.bashrc
-    fi
- 
-    if [ ! -d "/opt/eclipse" ]; then
-      wget -O /opt/eclipse-jee-oxygen-R-linux-gtk-x86_64.tar.gz http://eclipse.mirror.rafal.ca/technology/epp/downloads/release/oxygen/R/eclipse-jee-oxygen-R-linux-gtk-x86_64.tar.gz
-      cd /opt && tar -zxvf eclipse-jee-oxygen-R-linux-gtk-x86_64.tar.gz
-      rm -f eclipse-jee-oxygen-R-linux-gtk-x86_64.tar.gz
-      echo 'export PATH=/opt/eclipse:$PATH' >> /home/vagrant/.bashrc
-    fi
   SHELL
  
+  # Provision stuff as non-root user
   config.vm.provision "shell", privileged: false, inline: <<-SHELL
+    # Install sdkman to manage maven, gradle, java etc...
     curl -s https://get.sdkman.io | bash
     source ~/.sdkman/bin/sdkman-init.sh
     #sdk install java - prefer packaged installed version of java...
     sdk install maven
     sdk install gradle
- 
+
+    # Install nodejs
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
     . ~/.nvm/nvm.sh
     nvm install --lts node
     npm install --global npm@latest
+    ## Optionally install some packages...
     #npm install --global bower
     #npm install --global grunt-cli
     #npm install --global @angular/cli
+  SHELL
+
+# Optionally install some IDEs...
+  # config.vm.provision "shell", inline: <<-SHELL
+  #   if [ ! -d "/opt/idea-IU-172.3544.35" ]; then
+  #     wget -O /opt/ideaIU-2017.2.1-no-jdk.tar.gz https://download.jetbrains.com/idea/ideaIU-2017.2.1-no-jdk.tar.gz
+  #     cd /opt && tar -zxvf ideaIU-2017.2.1-no-jdk.tar.gz
+  #     rm -f ideaIU-2017.2.1-no-jdk.tar.gz
+  #     echo 'export PATH=/opt/idea-IU-172.3544.35/bin:$PATH' >> /home/vagrant/.bashrc
+  #   fi
+  #
+  #   if [ ! -d "/opt/pycharm-community-2017.2.1" ]; then
+  #     wget -O /opt/pycharm-community-2017.2.1.tar.gz https://download.jetbrains.com/python/pycharm-community-2017.2.1.tar.gz
+  #     cd /opt && tar -zxvf pycharm-community-2017.2.1.tar.gz
+  #     rm -f pycharm-community-2017.2.1.tar.gz
+  #     echo 'export PATH=/opt/pycharm-community-2017.2.1/bin:$PATH' >> /home/vagrant/.bashrc
+  #   fi
+  #
+  #   if [ ! -d "/opt/eclipse" ]; then
+  #     wget -O /opt/eclipse-jee-oxygen-R-linux-gtk-x86_64.tar.gz http://eclipse.mirror.rafal.ca/technology/epp/downloads/release/oxygen/R/eclipse-jee-oxygen-R-linux-gtk-x86_64.tar.gz
+  #     cd /opt && tar -zxvf eclipse-jee-oxygen-R-linux-gtk-x86_64.tar.gz
+  #     rm -f eclipse-jee-oxygen-R-linux-gtk-x86_64.tar.gz
+  #     echo 'export PATH=/opt/eclipse:$PATH' >> /home/vagrant/.bashrc
+  #   fi
+  # SHELL
+
+  # Version checks...
+  config.vm.provision "shell", privileged: false, inline: <<-SHELL
+    java -version
+    mvn --version
+    gradle --vesion
+    git --version
+    python --version
+    pip --version
+    docker --version
+    docker-compose --version
+    node --verion
+    npm --version
   SHELL
 end
