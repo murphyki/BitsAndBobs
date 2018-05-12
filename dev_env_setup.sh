@@ -21,7 +21,7 @@ sudo apt-get upgrade -y
 # Install java8
 sudo echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
 sudo echo debconf shared/accepted-oracle-license-v1-1 seen true | sudo debconf-set-selections
-sudo apt-get install -y oracle-java8-installer
+sudo apt-get install -y oracle-java8-installer # or sudo apt-get install oracle-java9-installer
 
 curl -O https://releases.hashicorp.com/vagrant/2.0.2/vagrant_2.0.2_x86_64.deb
 curl -O https://releases.hashicorp.com/vagrant/2.0.2/vagrant_2.0.2_SHA256SUMS
