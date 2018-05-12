@@ -1,5 +1,6 @@
 #!/bin/bash -eux
 
+# Install core apps
 sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
 
 # Setup keys and repos
@@ -40,5 +41,10 @@ sudo apt-get install -y atom sublime-text-installer
 sudo apt-get install -y virtualbox-5.2 ./vagrant_2.0.2_x86_64.deb
 
 sudo apt-get install -y docker-ce
-echo "Current user is $USER"
-usermod -aG docker $USER
+echo "Current user is: $USER"
+sudo usermod -aG docker $USER
+echo "Current mebers of group docker: "
+getent group docker
+# Note need to log out and log back in for changes to take affect
+
+
