@@ -19,7 +19,7 @@
 # 10. Go ahead and install other apps, e.g. kubernetes, IDEs, etc
 
 # Install core apps
-sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common git
 
 # Setup keys and repos
 sudo add-apt-repository -y ppa:webupd8team/java
