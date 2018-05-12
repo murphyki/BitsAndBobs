@@ -12,9 +12,11 @@
 # 5. Wait until script finishes, it'll take a while, 10/20 minutes
 # 6. You then need to log out of the VM and log back in so that docker related changes to groups take affect
 # 7. Give the VM a spin and make sure apps are working as expected
-# 8. If all goes well, take a snapshot of the VM, this will be the base snapshot we can rollback to if future
+# 8. Power down the VM and edit the VM settings - go to Processors and ensure that the checkbox
+# `Virtualize Intel VT-x/EPT or AMD-v/RVI` is ticked 
+# 9. Take a snapshot of the VM, this will be the base snapshot we can rollback to if future
 # endeavours go pear shaped
-# 9. Go ahead and install other apps, e.g. kubernetes, IDEs, etc
+# 10. Go ahead and install other apps, e.g. kubernetes, IDEs, etc
 
 # Install core apps
 sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
