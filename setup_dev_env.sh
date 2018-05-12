@@ -52,6 +52,7 @@ shasum -a 256 -c <(cat vagrant_2.0.2_SHA256SUMS | grep 64.deb) -s
 # Install apps
 sudo apt-get install -y python python-dev python-setuptools build-essential
 sudo apt-get install -y python-pip # or easy_install pip
+pip install --upgrade pip
 sudo apt-get install -y php libapache2-mod-php php-cli
 sudo apt-get install -y terminator
 sudo apt-get install -y filezilla
