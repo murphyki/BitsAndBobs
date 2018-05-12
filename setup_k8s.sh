@@ -3,7 +3,7 @@
 # See: https://kubernetes.io/docs/tasks/tools/install-minikube/
 # See: https://kubernetes.io/docs/tasks/tools/install-kubectl/
 sudo snap list
-sudo find kubectl
+sudo snap find kubectl
 sudo snap install kubectl --classic
 kubectl version
 
