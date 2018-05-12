@@ -18,7 +18,7 @@
 # endeavours go pear shaped
 # 10. Go ahead and install other apps, e.g. kubernetes, IDEs, etc
 
-# Install core apps
+# Install prerequisites
 sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common git
 
 # Setup keys and repos
@@ -64,5 +64,3 @@ sudo usermod -aG docker $USER
 echo "Current mebers of group docker: "
 getent group docker
 # Note need to log out and log back in for changes to take affect
-
-
