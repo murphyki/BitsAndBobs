@@ -109,8 +109,6 @@ Vagrant.configure("2") do |config|
     git --version
     python --version
     pip --version
-    docker --version
-    docker-compose --version
     node --verion
     npm --version
   SHELL
