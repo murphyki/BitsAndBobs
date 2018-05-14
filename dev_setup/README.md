@@ -1,4 +1,6 @@
 # Setup Instructions
+The instructions below should work for any Debian based version of Linux.
+
 ## Base Environment Setup
 - First, deploy a VM using VMWare Workstation, it has to be Workstation as it supports nested VMs whereas, unfortunately, VirtualBox does not. We need nested VM capability because minikube is deployed as a VM
 - Deploy the VM from the OS ISO file, in my case this was `ubuntu-16.04.4-desktop-amd64.iso` which i downloaded from the ubuntu downloads site. The VM setup is super simple with Workstation. One thing though, check the date and time after installtion is complete, my date and time was way off!!
