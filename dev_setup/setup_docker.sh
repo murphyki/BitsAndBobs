@@ -3,9 +3,11 @@
 # Install docker (Community Edition)
 sudo apt-get install -y docker-ce
 
-# Configure docker group
+# Add the current user to the docker group
 echo "Current user is: $USER"
 sudo usermod -aG docker $USER
+
+# Verify that the user was added to the docker group
 echo "Current mebers of group docker: "
 getent group docker
 
