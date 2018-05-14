@@ -6,11 +6,18 @@
 - Change directory into the repo folder and: `chmod +x *.sh` all the script files
 - Execute: `./setup_dev_env.sh`
 - Wait until script finishes, it'll take a while, 10/20 minutes
-- You then need to log out of the VM and log back in so that docker related changes to groups take affect
 - Give the VM a spin and make sure apps are working as expected
 - Power down the VM and edit the VM settings - go to `Processors` and ensure that the checkbox `Virtualize Intel VT-x/EPT or AMD-v/RVI` is ticked 
 - Take a snapshot of the VM, this will be the base snapshot we can rollback to if future endeavours go pear shaped
 - Go ahead and install other apps, e.g. kubernetes, IDEs, etc
+
+## Docker Environment Setup
+- Change directory to the `BitsAndBobs` repo
+- Execute: `./setup_docker.sh`
+- Wait until script finishes, it'll take a while, 2/3 minutes
+- Log out of the VM and log back in so that docker related changes to groups can take affect
+- All going well, take a snapshot of the VM
+- Go ahead and install other apps, e.g. Kubernetes, ansible, AWX, etc
 
 ## Kubernetes Environment Setup
 - Change directory to the `BitsAndBobs` repo
