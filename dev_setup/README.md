@@ -25,4 +25,5 @@ N.B. before setting up your kubernetes environment on your VM, ensure you have e
 - Change directory to the `BitsAndBobs` repo
 - Execute: `./setup_ansible_awx.sh`
 - Wait until script finishes, it'll take a while, 4/5 minutes
-- to do...
+- At this point we have ansibe installed and the AWX github repo cloned _but_ to complete the AWX setup we need to edit some of the setings in the `awx/inventory` file
+- 
