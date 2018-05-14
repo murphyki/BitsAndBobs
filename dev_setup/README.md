@@ -1,7 +1,7 @@
 # Setup Instructions
 ## Base Environment Setup
 - First, deploy a VM using VMWare Workstation, it has to be Workstation as it supports nested VMs whereas, unfortunately, VirtualBox does not. We need nested VM capability because minikube is deployed as a VM
-- Deploy the VM from the OS ISO file, in my case this was `ubuntu-16.04.4-desktop-amd64.iso` which i downloaded from the ubuntu downloads site. THe VM setup is super simple with Workstation. One thing though, check the date and time after installtion is complete, my date and time was way off!!
+- Deploy the VM from the OS ISO file, in my case this was `ubuntu-16.04.4-desktop-amd64.iso` which i downloaded from the ubuntu downloads site. The VM setup is super simple with Workstation. One thing though, check the date and time after installtion is complete, my date and time was way off!!
 - Clone this repo: `git clone https://github.com/murphyki/BitsAndBobs.git` 
 - Change directory into the repo folder and: `chmod +x *.sh` all the script files
 - Execute: `./setup_dev_env.sh`
