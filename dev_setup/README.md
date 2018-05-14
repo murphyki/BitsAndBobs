@@ -21,7 +21,7 @@
 
 N.B. before setting up your kubernetes environment on your VM, ensure you have enabled virtualisation: go to `Processors` and check that the checkbox `Virtualize Intel VT-x/EPT or AMD-v/RVI` is ticked. We will be installing `minikube` which downloads and launches a VM and if virtualisation is not enabled for the VM this will fail. If this happens, run `minikube delete` and reinstall minikube - see `setup_k8s.sh` for instructions
 
-## Ansible and AWX 
+## Ansible and AWX Setup
 - Change directory to the `BitsAndBobs` repo
 - Execute: `./setup_ansible_awx.sh`
 - Wait until script finishes, it'll take a while, 4/5 minutes
