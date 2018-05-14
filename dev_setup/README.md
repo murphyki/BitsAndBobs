@@ -19,7 +19,7 @@ The instructions below should work for any Debian based version of Linux.
 - Wait until script finishes, it'll take a while, 2/3 minutes
 - Log out of the VM and log back in so that docker related changes to groups can take affect
 - All going well, take a snapshot of the VM
-- Go ahead and install other apps, e.g. Kubernetes, ansible, AWX, etc
+- Go ahead and install other apps, e.g. Docker, Kubernetes, ansible, AWX, etc
 
 ## Kubernetes Environment Setup
 - Change directory to the `BitsAndBobs` repo
