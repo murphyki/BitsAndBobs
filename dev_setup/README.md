@@ -29,6 +29,6 @@ N.B. before setting up your kubernetes environment on your VM, ensure you have e
 - To complete the AWX setup, do the following:
   - `cd awx/installer`
   - Edit the config in the `inventory` file:
-    - change the `docker_port` from 80 to 8080
+    - change the `docker_port` from `80` to `8080`
     - change the default username and password
   - Execute: `ansible-playbook -i inventory install.yml`
