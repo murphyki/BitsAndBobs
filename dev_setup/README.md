@@ -23,14 +23,7 @@ The instructions below should work for any Debian based version of Linux.
 
 Note:
 When building docker images it seems that docker is not always able to reach out to the internet for packages and the build fails.
-As a work-around, create the following docker network, using the IP of the host:
-
-`docker network create -o "com.docker.network.bridge.host_binding_ipv4"="10.X.X.X" my-network`
-
-where 10.X.X.X is your host IP
-
-Then when building an image execute:
-`docker build --network my-network .`
+As a work-around, use the `host` docker network: `docker build --network host .`
 
 ## Kubernetes Environment Setup
 - Change directory to the `BitsAndBobs` repo
