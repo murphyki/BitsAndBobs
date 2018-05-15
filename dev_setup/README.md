@@ -21,6 +21,18 @@ The instructions below should work for any Debian based version of Linux.
 - All going well, take a snapshot of the VM
 - Go ahead and install other apps, e.g. Docker, Kubernetes, ansible, AWX, etc
 
+```
+Note:
+When building docker images it seems that docker is not always able to reach out to the interent for packags and the build failes.
+As a work-around, create the following docker network, using th eIP of the host:
+
+`docker network create -o "com.docker.network.bridge.host_binding_ipv4"="10.X.X.XX" my-network`
+where 10.X.X.XX is your host IP
+
+Then when building an imge execute:
+`docker build --network my-network .`
+```
+
 ## Kubernetes Environment Setup
 - Change directory to the `BitsAndBobs` repo
 - Execute: `./setup_k8s.sh`
