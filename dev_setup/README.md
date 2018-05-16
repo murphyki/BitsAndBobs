@@ -22,8 +22,8 @@ The instructions below should work for any Debian based version of Linux.
 - Go ahead and install other apps, e.g. Docker, Kubernetes, ansible, AWX, etc
 
 Note:
-When building docker images it seems that docker is not always able to reach out to the internet for packages and the build fails.
-As a work-around, use the `host` docker network: `docker build --network host .`
+- When building docker images it seems that docker is not always able to reach out to the internet for packages and the build fails.
+- As a work-around, use the `host` docker network: `docker build --network host .`
 
 ## Kubernetes Environment Setup
 - Change directory to the `BitsAndBobs` repo
@@ -32,7 +32,19 @@ As a work-around, use the `host` docker network: `docker build --network host .`
 - All going well, take a snapshot of the VM
 - Go ahead and install other apps, e.g. ansible, AWX, etc
 
-N.B. before setting up your kubernetes environment on your VM, ensure you have enabled virtualisation: go to `Processors` and check that the checkbox `Virtualize Intel VT-x/EPT or AMD-v/RVI` is ticked. We will be installing `minikube` which downloads and launches a VM and if virtualisation is not enabled for the VM this will fail. If this happens, run `minikube delete` and reinstall minikube - see `setup_k8s.sh` for instructions
+Note:
+- Before setting up your kubernetes environment on your VM, ensure you have enabled virtualisation: go to `Processors` and check that the checkbox `Virtualize Intel VT-x/EPT or AMD-v/RVI` is ticked. We will be installing `minikube` which downloads and launches a VM and if virtualisation is not enabled for the VM this will fail. If this happens, run `minikube delete` and reinstall minikube - see `setup_k8s.sh` for instructions
+- When building docker images to run as containers in minikube, there is a little gotcha: the images you build on your vm are not visible inside the minikube VM, so when you try to deploy pods based on your docker images the pods will fail to run with an error: 
+``` 
+Container image "murphyki/web-gateway" is not present with pull policy of Never
+Error: ErrImageNeverPull
+```
+- To work around this run the following command inside the shell window you are currently working in so that it uses the minikube docker:
+```
+eval $(minikube docker-env)
+```
+To see the affect of this run: `docker images` notice how your docker images are not there...
+- You now need to rebuild all your docker images again so that they are available inside the minikube VM
 
 ## Ansible and AWX Setup
 - Change directory to the `BitsAndBobs` repo
