@@ -17,6 +17,7 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | 
 . ~/.nvm/nvm.sh
 nvm install --lts node
 npm install --global npm@latest
+
 pip install docker-py --user
 
 # Install AWX
