@@ -20,7 +20,7 @@ pushd .
 cd ./kfd-flask
 docker build -t kubernetes-for-developers/flask .
 if ! kubectl get deployment flask; then
-    kubectl run flask --image=kubernetes-for-developers/flask --port=3000 --overrides='{"spec":{"template":{"spec":{"containers":[{"name":"flask","imagePullPolicy":"Never","image":"kubernetes-for-developers/flask"}]}}}}'
+    kubectl run flask --image=kubernetes-for-developers/flask --port=5000 --overrides='{"spec":{"template":{"spec":{"containers":[{"name":"flask","imagePullPolicy":"Never","image":"kubernetes-for-developers/flask"}]}}}}'
 fi
 popd
 
