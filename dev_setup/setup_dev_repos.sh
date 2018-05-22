@@ -33,6 +33,15 @@ fi
 eval $(minikube docker-env)
 
 # Deploy k8s examples
+
+pushd .
+cd ./ngci-demo
+docker build -t silvam11/web-gateway ./web-gateway
+docker build -t silvam11/repo-manager ./repo-manager
+docker build -t silvam11/vcsa-manager ./vcsa-manager
+kubectl apply -f web-gateway-deployment.yml
+popd
+
 pushd .
 cd ./kfd-flask
 docker build -t kubernetes-for-developers/flask .
