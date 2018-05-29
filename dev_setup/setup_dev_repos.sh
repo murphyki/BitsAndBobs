@@ -57,3 +57,7 @@ if ! kubectl get deployment nodejs; then
     kubectl run nodejs --image=kubernetes-for-developers/nodejs --port=3000 --overrides='{"spec":{"template":{"spec":{"containers":[{"name":"nodejs","imagePullPolicy":"Never","image":"kubernetes-for-developers/nodejs"}]}}}}'
 fi
 popd
+
+# List current info
+kubectl get all --all-namespaces
+
