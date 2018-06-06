@@ -6,6 +6,7 @@ This repository contains Packer templates for creating:
 - Ubuntu
 - CentOS
 - Centos Atomic
+
 VMWare OVAs and Vagrant boxes.
 
 ## Prerequisites
