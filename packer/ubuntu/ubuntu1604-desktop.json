@@ -8,7 +8,7 @@
   "headless": "true",
   "iso_checksum": "c9145abdc41011b2fc9b32b9d96175020760e284",
   "iso_checksum_type": "sha1",
-  "iso_name": "ubuntu-16.04.4-desktop-amd64.iso",
+  "iso_name": "ubuntu-16.04.4-server-amd64.iso",
   "iso_url": "http://releases.ubuntu.com/16.04/ubuntu-16.04.4-desktop-amd64.iso",
   "memory": "1024",
   "preseed": "preseed-1604-desktop.cfg",

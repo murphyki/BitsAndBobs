@@ -16,7 +16,9 @@ Ensure you have the following software installed:
 - [VMware Workstation](https://www.vmware.com/products/workstation) or for amc users, [VMware Fusion](https://www.vmware.com/products/fusion)
 - [VMWare ovftool](https://www.vmware.com/support/developer/ovf/)
 
-NOTE: Ensure that both the `packer` and `ovftool` executables are available on your `PATH`.
+NOTE:
+- If building on Windows, run your console in administrator mode 
+- Ensure that both the `packer` and `ovftool` executables are available on your `PATH`.
 
 ## Building with Packer
 The provided templates can be customized via user variables defined in JSON files.
