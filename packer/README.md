@@ -2,7 +2,7 @@
 
 ### Overview
 
-This repository contains Packer templates for creating:
+This folder contains Packer templates for creating:
 - Ubuntu
 - CentOS
 - Centos Atomic
