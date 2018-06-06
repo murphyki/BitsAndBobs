@@ -21,7 +21,7 @@
       ],
       "disk_size": "{{ user `disk_size` }}",
       "floppy_files": [
-        "http/{{ user `preseed` }}"
+        "preseeds/{{ user `preseed` }}"
       ],
       "guest_os_type": "{{ user `vmware_guest_os_type` }}",
       "headless": "{{ user `headless` }}",
@@ -67,7 +67,7 @@
       ],
       "disk_size": "{{ user `disk_size` }}",
       "floppy_files": [
-        "http/{{ user `preseed` }}"
+        "preseeds/{{ user `preseed` }}"
       ],
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
       "guest_os_type": "{{ user `virtualbox_guest_os_type` }}",
@@ -107,7 +107,7 @@
       "only": ["virtualbox-iso"],
       "keep_input_artifact": false,
       "output": "dist/box/{{user `vm_name`}}-{{user `version`}}.box",
-      "vagrantfile_template": "{{ user `vagrantfile_template` }}",
+      "vagrantfile_template": "{{ user `vagrantfile_template` }}"
     },
     {
       "type": "shell-local",
