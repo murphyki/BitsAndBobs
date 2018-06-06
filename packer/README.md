@@ -17,8 +17,12 @@ Ensure you have the following software installed:
 - [VMWare ovftool](https://www.vmware.com/support/developer/ovf/)
 
 NOTE:
-- If building on Windows, run your console in administrator mode 
+- If building on Windows, run your console in administrator mode
 - Ensure that both the `packer` and `ovftool` executables are available on your `PATH`.
+
+TIP:
+- If building on Windows, consider using the [Cmder | Console Emulator](http://cmder.net/) which
+provides a Linux like console environment for poor souls stuck on Windows :).
 
 ## Building with Packer
 The provided templates can be customized via user variables defined in JSON files.
