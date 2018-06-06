@@ -5,9 +5,9 @@
 This folder contains Packer templates for creating:
 - Ubuntu
 - CentOS
-- Centos Atomic
+- CentOS Atomic
 
-VMWare OVAs and Vagrant boxes.
+OVAs and boxes for VMWare and VirtualBox.
 
 ## Prerequisites
 Ensure you have the following software installed:
