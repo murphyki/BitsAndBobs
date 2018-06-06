@@ -1,0 +1,15 @@
+{
+  "_comment": "Build with `packer build -var-file=centos7-server.json centos.json`",
+  "vm_name": "centos7-server",
+  "cpus": "1",
+  "disk_size": "65536",
+  "headless": "false",
+  "iso_checksum": "506e4e06abf778c3435b4e5745df13e79ebfc86565d7ea1e128067ef6b5a6345",
+  "iso_checksum_type": "sha256",
+  "iso_name": "CentOS-7-x86_64-DVD-1804.iso",
+  "iso_url": "http://mirrors.sonic.net/centos/7.5.1804/isos/x86_64/CentOS-7-x86_64-DVD-1804.iso",
+  "kickstarts_dir": "kickstarts",
+  "kickstart": "/kickstarts/ks-7-server.cfg",
+  "memory": "512",
+  "vmware_guest_os_type": "rhel7-64"
+}

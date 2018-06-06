@@ -1,0 +1,10 @@
+build/
+packer_cache/
+.vagrant/
+output-*
+*.box
+*.ova
+*.tar.gz
+*.iso
+crash.log
+tmp
