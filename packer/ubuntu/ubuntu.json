@@ -5,19 +5,17 @@
       "boot_command": [
         "{{ user `boot_command_prefix` }}",
         "/install/vmlinuz noapic ",
-        "initrd=/install/initrd.gz ",
         "file=/floppy/{{ user `preseed` }} ",
         "debian-installer={{ user `locale` }} auto locale={{ user `locale` }} kbd-chooser/method=us ",
         "hostname={{ user `hostname` }} ",
-        "grub-installer/bootdev=/dev/sda<wait> ",
         "fb=false debconf/frontend=noninteractive ",
         "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA ",
         "keyboard-configuration/variant=USA console-setup/ask_detect=false ",
         "passwd/user-fullname={{ user `ssh_fullname` }} ",
+        "passwd/username={{ user `ssh_username` }} ",
         "passwd/user-password={{ user `ssh_password` }} ",
         "passwd/user-password-again={{ user `ssh_password` }} ",
-        "passwd/username={{ user `ssh_username` }} ",
-        "-- <enter>"
+        "initrd=/install/initrd.gz -- <enter>"
       ],
       "disk_size": "{{ user `disk_size` }}",
       "floppy_files": [
@@ -51,19 +49,17 @@
       "boot_command": [
         "{{ user `boot_command_prefix` }}",
         "/install/vmlinuz noapic ",
-        "initrd=/install/initrd.gz ",
         "file=/floppy/{{ user `preseed` }} ",
         "debian-installer={{ user `locale` }} auto locale={{ user `locale` }} kbd-chooser/method=us ",
         "hostname={{ user `hostname` }} ",
-        "grub-installer/bootdev=/dev/sda<wait> ",
         "fb=false debconf/frontend=noninteractive ",
         "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA ",
         "keyboard-configuration/variant=USA console-setup/ask_detect=false ",
         "passwd/user-fullname={{ user `ssh_fullname` }} ",
+        "passwd/username={{ user `ssh_username` }} ",
         "passwd/user-password={{ user `ssh_password` }} ",
         "passwd/user-password-again={{ user `ssh_password` }} ",
-        "passwd/username={{ user `ssh_username` }} ",
-        "-- <enter>"
+        "initrd=/install/initrd.gz -- <enter>"
       ],
       "disk_size": "{{ user `disk_size` }}",
       "floppy_files": [
@@ -117,7 +113,7 @@
         "VMX_NAME=build/{{user `vm_name`}}/{{user `vm_name`}}.vmx",
         "OVA_NAME=dist/ova/{{user `vm_name`}}-{{user `version`}}.ova"
       ],
-      "script": "scripts/vmx-to-ova.cmd"
+      "script": "scripts/vmx-to-ova.{{user `vmx_to_ova_script_extension`}}"
     }
   ],
   "provisioners": [
@@ -187,6 +183,7 @@
     "version": "0.0.1",
     "virtualbox_guest_os_type": "Ubuntu_64",
     "vm_name": "ubuntu1604",
-    "vmware_guest_os_type": "ubuntu-64"
+    "vmware_guest_os_type": "ubuntu-64",
+    "vmx_to_ova_script_extension": "sh"
   }
 }

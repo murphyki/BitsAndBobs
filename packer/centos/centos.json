@@ -93,7 +93,7 @@
         "VMX_NAME=build/{{user `vm_name`}}/{{user `vm_name`}}.vmx",
         "OVA_NAME=dist/ova/{{user `vm_name`}}-{{user `version`}}.ova"
       ],
-      "script": "scripts/vmx-to-ova.cmd"
+      "script": "scripts/vmx-to-ova.{{user `vmx_to_ova_script_extension`}}"
     }
   ],
   "provisioners": [
@@ -182,6 +182,7 @@
     "virtualbox_paravirtprovider": "default",
     "virtualbox_nictype": "virtio",
     "vm_name": "centos7",
-    "vmware_guest_os_type": "centos-64"
+    "vmware_guest_os_type": "centos-64",
+    "vmx_to_ova_script_extension": "sh"
   }
 }

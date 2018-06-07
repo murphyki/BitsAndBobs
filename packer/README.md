@@ -49,6 +49,24 @@ The provided templates currently support the following desktop virtualization st
 - `virtualbox-iso` - [VirtualBox](https://www.virtualbox.org/wiki/Downloads) desktop virtualization
 - `vmware-iso` - [VMware Fusion](https://www.vmware.com/products/fusion) or [VMware Workstation](https://www.vmware.com/products/workstation) desktop virtualization
 
+### vmx-to-ova post-processor
+The `vmx-to-ova` post-processor is used to convert a `vmware-iso` VM to an OVA file using the VMWare `ovftool`.
+
+This post-processor is run as a `shell-local` postprocessor, meaning it will run a script locally, on the same system that packer itself is running on.
+
+When using `shell-local` and inline script can be provided via the `inline` option or
+a script file can be provided via the `script` or `scripts` options.
+
+I've tried several ways using the above to find an operating system agnostic way to run this post-processor but to no avail.
+
+The solution, for now, which is less than ideal is to provide a shell script for Linux systems and a command (cmd) script for windows systems. The script extension is configurable via a user variable and defaults to the Linux shell script extension: `sh`.
+
+If building on windows this behaviour can be overridden from the commandline using the `-var` commandline option:
+
+    $ packer build -only=virtualbox-iso -var-file=centos7.json -var="vmx_to_ova_script_extension=cmd" centos.json
+
+See the [Setting Variables](https://www.packer.io/docs/templates/user-variables.html#setting-variables) section of the packer documentation for how these options can be used together.
+
 ## Troubleshooting
 For information on debugging issues with packer see [Debugging Packer Builds](https://www.packer.io/docs/other/debugging.html).
 
