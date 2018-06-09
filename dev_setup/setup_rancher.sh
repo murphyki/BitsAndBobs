@@ -1,7 +1,7 @@
 #!/bin/bash -eux
 
 # Install prerequisites
-./setup_prereqs
+source ./setup_prereqs
 
 # Install docker, rancher explicitly supports certain version so
 # install one of the, see:

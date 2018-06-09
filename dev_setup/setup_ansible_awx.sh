@@ -1,7 +1,7 @@
 #!/bin/bash -eux
 
 # Install prerequisites
-./setup_prereqs
+source ./setup_prereqs
 
 # Add repos
 sudo apt-add-repository -y ppa:ansible/ansible

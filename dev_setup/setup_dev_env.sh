@@ -1,7 +1,7 @@
 #!/bin/bash -eux
 
 # Install prerequisites
-./setup_prereqs
+source  ./setup_prereqs
 
 # Setup keys and repos
 sudo add-apt-repository -y ppa:webupd8team/java

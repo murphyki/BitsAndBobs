@@ -1,7 +1,7 @@
 #!/bin/bash -eux
 
 # Install prerequisites
-./setup_prereqs
+source ./setup_prereqs
 
 # Setup docker repo
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
