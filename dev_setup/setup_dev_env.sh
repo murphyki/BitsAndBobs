@@ -1,7 +1,7 @@
 #!/bin/bash -eux
 
 # Install prerequisites
-sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common git
+./setup_prereqs
 
 # Setup keys and repos
 sudo add-apt-repository -y ppa:webupd8team/java

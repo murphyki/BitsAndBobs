@@ -1,5 +1,8 @@
 #!/bin/bash -eux
 
+# Install prerequisites
+./setup_prereqs
+
 # Setup docker repo
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
@@ -19,4 +22,3 @@ echo "Current mebers of group docker: "
 getent group docker
 
 # Note need to log out and log back in for changes to take affect
-

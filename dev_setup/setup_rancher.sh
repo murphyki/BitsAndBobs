@@ -1,7 +1,7 @@
 #!/bin/bash -eux
 
 # Install prerequisites
-sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common git
+./setup_prereqs
 
 # Install docker, rancher explicitly supports certain version so
 # install one of the, see:

@@ -1,7 +1,7 @@
 #!/bin/bash -eux
 
-# Install prerequiites
-sudo apt-get install -y bzip2 zip unzip build-essential
+# Install prerequisites
+./setup_prereqs
 
 # Add repos
 sudo apt-add-repository -y ppa:ansible/ansible

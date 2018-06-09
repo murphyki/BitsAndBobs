@@ -4,12 +4,12 @@ The instructions below should work for any Debian based version of Linux.
 ## Base Environment Setup
 - First, deploy a VM using VMWare Workstation, it has to be Workstation as it supports nested VMs whereas, unfortunately, VirtualBox does not. We need nested VM capability because minikube is deployed as a VM
 - Deploy the VM from the OS ISO file, in my case this was `ubuntu-16.04.4-desktop-amd64.iso` which i downloaded from the ubuntu downloads site. The VM setup is super simple with Workstation. One thing though, check the date and time after installtion is complete, my date and time was way off!!
-- Clone this repo: `git clone https://github.com/murphyki/BitsAndBobs.git` 
+- Clone this repo: `git clone https://github.com/murphyki/BitsAndBobs.git`
 - Change directory into the repo folder and: `chmod +x *.sh` all the script files
 - Execute: `./setup_dev_env.sh`
 - Wait until script finishes, it'll take a while, 10/20 minutes
 - Give the VM a spin and make sure apps are working as expected
-- Power down the VM and edit the VM settings - go to `Processors` and ensure that the checkbox `Virtualize Intel VT-x/EPT or AMD-v/RVI` is ticked 
+- Power down the VM and edit the VM settings - go to `Processors` and ensure that the checkbox `Virtualize Intel VT-x/EPT or AMD-v/RVI` is ticked
 - Take a snapshot of the VM, this will be the base snapshot we can rollback to if future endeavours go pear shaped
 - Go ahead and install other apps, e.g. kubernetes, IDEs, etc
 
@@ -27,15 +27,15 @@ Note:
 
 ## Kubernetes Environment Setup
 - Change directory to the `BitsAndBobs` repo
-- Execute: `./setup_k8s.sh`
+- Execute: `./setup_minikube.sh`
 - Wait until script finishes, it'll take a while, 5/10 minutes
 - All going well, take a snapshot of the VM
 - Go ahead and install other apps, e.g. ansible, AWX, etc
 
 Note:
 - Before setting up your kubernetes environment on your VM, ensure you have enabled virtualisation: go to `Processors` and check that the checkbox `Virtualize Intel VT-x/EPT or AMD-v/RVI` is ticked. We will be installing `minikube` which downloads and launches a VM and if virtualisation is not enabled for the VM this will fail. If this happens, run `minikube delete` and reinstall minikube - see `setup_k8s.sh` for instructions
-- When building docker images to run as containers in minikube, there is a little gotcha: the images you build on your vm are not visible inside the minikube VM, so when you try to deploy pods based on your docker images the pods will fail to run with an error: 
-``` 
+- When building docker images to run as containers in minikube, there is a little gotcha: the images you build on your vm are not visible inside the minikube VM, so when you try to deploy pods based on your docker images the pods will fail to run with an error:
+```
 Container image "murphyki/web-gateway" is not present with pull policy of Never
 Error: ErrImageNeverPull
 ```
