@@ -22,7 +22,7 @@ configure_ubuntu1204_autologin()
 echo "==> Checking version of Ubuntu"
 . /etc/lsb-release
 
-if [[ $DISTRIB_RELEASE == 12.04 ]]; then
+if [[ $DISTRIB_RELEASE == 12.04 && "$ENABLE_AUTO_LOGIN" =~ ^(true|yes|on|1|TRUE|YES|ON])$ ]]; then
 
     configure_ubuntu1204_autologin
 
@@ -30,19 +30,21 @@ elif [[ $DISTRIB_RELEASE == 14.04 || $DISTRIB_RELEASE == 15.04 || $DISTRIB_RELEA
     echo "==> Installing ubuntu-desktop"
     apt-get install -y ubuntu-desktop
 
-    USERNAME=${SSH_USER}
-    LIGHTDM_CONFIG=/etc/lightdm/lightdm.conf
-    GDM_CUSTOM_CONFIG=/etc/gdm/custom.conf
+    if [[  "$ENABLE_AUTO_LOGIN" =~ ^(true|yes|on|1|TRUE|YES|ON])$ ]]; then
+        USERNAME=${SSH_USER}
+        LIGHTDM_CONFIG=/etc/lightdm/lightdm.conf
+        GDM_CUSTOM_CONFIG=/etc/gdm/custom.conf
 
-    mkdir -p $(dirname ${GDM_CUSTOM_CONFIG})
-    echo "[daemon]" >> $GDM_CUSTOM_CONFIG
-    echo "# Enabling automatic login" >> $GDM_CUSTOM_CONFIG
-    echo "AutomaticLoginEnable=True" >> $GDM_CUSTOM_CONFIG
-    echo "AutomaticLoginEnable=${USERNAME}" >> $GDM_CUSTOM_CONFIG
+        mkdir -p $(dirname ${GDM_CUSTOM_CONFIG})
+        echo "[daemon]" >> $GDM_CUSTOM_CONFIG
+        echo "# Enabling automatic login" >> $GDM_CUSTOM_CONFIG
+        echo "AutomaticLoginEnable=True" >> $GDM_CUSTOM_CONFIG
+        echo "AutomaticLoginEnable=${USERNAME}" >> $GDM_CUSTOM_CONFIG
 
-    echo "==> Configuring lightdm autologin"
-    echo "[SeatDefaults]" >> $LIGHTDM_CONFIG
-    echo "autologin-user=${USERNAME}" >> $LIGHTDM_CONFIG
+        echo "==> Configuring lightdm autologin"
+        echo "[SeatDefaults]" >> $LIGHTDM_CONFIG
+        echo "autologin-user=${USERNAME}" >> $LIGHTDM_CONFIG
+    fi
 fi
 
 if [ -d /etc/xdg/autostart/ ]; then
@@ -59,4 +61,3 @@ NODPMS_CONFIG=/etc/xdg/autostart/nodpms.desktop
     echo "Comment[en_US]=" >> $NODPMS_CONFIG
     echo "Comment=" >> $NODPMS_CONFIG
 fi
-
