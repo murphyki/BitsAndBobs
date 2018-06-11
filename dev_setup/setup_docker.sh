@@ -4,11 +4,11 @@
 # which matches kubernetes supported version...
 DOCKER_VERSION=${1:-"17.03"}
 DOCKER_PACKAGE=${2:-$(apt-cache madison docker-ce | grep $DOCKER_VERSION | head -1 | awk '{print $3}')}
-DOCKER_PACKAGE=${DOCKER_PACKAGE:-"hello"}
+DOCKER_PACKAGE=${DOCKER_PACKAGE:-"17.03.2~ce-0~ubuntu-xenial"}
 
 LINUX_CODENAME=$(lsb_release -cs)
 
-echo "Installing docker version $DOCKER_VERSION"
+echo "Installing docker version $DOCKER_VERSION using package $DOCKER_PACKAGE"
 
 # Install prerequisites
 source ./setup_prereqs.sh
