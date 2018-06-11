@@ -59,7 +59,7 @@ Note:
 
 ## Kubernetes Environment Setup
 For a kubernetes environment you have choices:
-1. Istall and use [minikube](https://github.com/kubernetes/minikube)  
+1. Install and use [minikube](https://github.com/kubernetes/minikube)  
 2. Install a single node cluster using [kubeadm](https://kubernetes.io/docs/tasks/tools/install-kubeadm/)
 
 Note: Favour a single node luster over minikube as it gives much better performance and is not as resource hungry.
