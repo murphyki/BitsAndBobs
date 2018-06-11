@@ -1,5 +1,7 @@
 #!/bin/bash -eux
 
+# See https://kubernetes.io/docs/tasks/tools/install-kubeadm/
+
 # Install prerequisites
 source ./setup_prereqs
 
