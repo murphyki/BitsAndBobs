@@ -30,8 +30,10 @@ Once you have a VM created and powered on do the following from your console of 
 - Go ahead and install other apps, e.g. docker, ansible AWX, kubernetes, IDEs, etc
 
 ## Docker Environment Setup
-- Change directory to the `BitsAndBobs` repo
+- Change directory to the `BitsAndBobs/dev_setup` repo
 - Execute: `./setup_docker.sh`
+  - If using ubuntu 18.04 issue the following command instead: `./setup_docker.sh 18.05`
+  - This is because docker 17.03 is not yet available on ubuntu 18.04
 - Wait until script finishes, it'll take a while, 2/3 minutes
 - Log out of the VM and log back in so that docker related changes to groups can take affect
 - All going well, take a snapshot of the VM
@@ -49,7 +51,7 @@ For a kubernetes environment you have choices:
 Note: Favour a single node luster over minikube as it gives much better performance and is not as resource hungry.
 
 ### Minikube Setup
-- Change directory to the `BitsAndBobs` repo
+- Change directory to the `BitsAndBobs/dev_setup` repo
 - Execute: `./setup_k8s_minikube.sh`
 - Wait until script finishes, it'll take a while, 5/10 minutes
 - All going well, take a snapshot of the VM
@@ -70,10 +72,18 @@ To see the affect of this run: `docker images` notice how your docker images are
 - You now need to rebuild all your docker images again so that they are available inside the minikube VM
 
 ### Single Node Cluster Setup
-to do...
+- Change directory to the `BitsAndBobs/dev_setup` repo
+- Execute: `./setup_k8s_single_node_cluster.sh`
+  - Note the join token from the output in case we want to add some worker nodes later, but right now our master node will also act as a worker node...
+- Wait until script finishes, it'll take a few mins, 2/3 minutes
+- Deploy the kubernetes dashboard:  `./setup_k8s_dashboard.sh`
+  - Note the token dumped to the console, we can use that when asked to login to the dashboard later
+- All going well, take a snapshot of the VM
+- Go ahead and install other apps, e.g. ansible, AWX, etc
+
 
 ## Ansible and AWX Setup
-- Change directory to the `BitsAndBobs` repo
+- Change directory to the `BitsAndBobs/dev_setup` repo
 - Execute: `./setup_ansible_awx.sh`
 - Wait until script finishes, it'll take a while, 4/5 minutes
 - At this point we have ansibe installed and the AWX github repo cloned _but_ to complete the AWX setup we need to edit some of the setings in the `awx/inventory` file
