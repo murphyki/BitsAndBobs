@@ -1,5 +1,11 @@
 #!/bin/bash -eux
 
+# Can pass in the specific version of docker or use the default
+# which matches kubernetes supported version...
+DOCKER_VERSION=${1:-"17.03"}
+
+echo "Installing rancher with docker version $DOCKER_VERSION"
+
 # Install prerequisites
 source ./setup_prereqs.sh
 
@@ -10,7 +16,7 @@ source ./setup_prereqs.sh
 # NOTE: You may need to run this script in 2 stages if installing on a clean vm
 # since after installing docker and updating the docker group you need to
 # log out of the VM and log back in for the changes to take affect.
-curl https://releases.rancher.com/install-docker/17.03.sh | sh
+curl https://releases.rancher.com/install-docker/$DOCKER_VERSION.sh | sh
 sudo usermod -aG docker $USER
 
 # Open ports

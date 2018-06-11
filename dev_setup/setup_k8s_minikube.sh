@@ -1,5 +1,10 @@
 #!/bin/bash -eux
 
+# Provide specific minikube version or use default
+MINIKUBE_VERSION=${1:-"0.26.1"}
+
+echo "Installing minikube version $MINIKUBE_VERSION"
+
 # Install prerequisites
 source ./setup_prereqs.sh
 
@@ -11,7 +16,7 @@ sudo snap install kubectl --classic
 
 # See: https://github.com/kubernetes/minikube/releases
 # Note: Downloading the minikube ISO from behind a corporate firewall may not work, so you need to use an open connection...
-wget -O minikube https://storage.googleapis.com/minikube/releases/v0.26.1/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
+wget -O minikube https://storage.googleapis.com/minikube/releases/v${MINIKUBE_VERSION}/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
 
 minikube start
 

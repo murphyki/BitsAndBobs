@@ -1,8 +1,10 @@
 #!/bin/bash -eux
 
-# Calling out a specific version of docker here as kubernetes
-# supports certain versions...
-DOCKER_VERSION="17.03"
+# Can pass in the specific version of docker or use the default
+# which matches kubernetes supported version...
+DOCKER_VERSION=${1:-"17.03"}
+
+echo "Installing docker version $DOCKER_VERSION"
 
 # Install prerequisites
 source ./setup_prereqs
