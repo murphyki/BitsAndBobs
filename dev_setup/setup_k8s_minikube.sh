@@ -1,7 +1,7 @@
 #!/bin/bash -eux
 
 # Install prerequisites
-source ./setup_prereqs
+source ./setup_prereqs.sh
 
 # See: https://kubernetes.io/docs/tasks/tools/install-minikube/
 # See: https://kubernetes.io/docs/tasks/tools/install-kubectl/

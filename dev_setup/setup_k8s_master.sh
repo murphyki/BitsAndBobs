@@ -1,9 +1,9 @@
 #!/bin/bash -eux
 
-# See https://kubernetes.io/docs/tasks/tools/install-kubeadm/
-
 # Install k8s prerequisites
-source ./setup_k8s_prereqs
+source ./setup_k8s_prereqs.sh
+
+# See https://kubernetes.io/docs/tasks/tools/install-kubeadm/
 
 # Initialise the kubernetes master
 # The --pod-network-cidr value is specific to the pod network we want to deploy.

@@ -1,7 +1,7 @@
 #!/bin/bash -eux
 
 # Install k8s prerequisites
-source ./setup_k8s_prereqs
+source ./setup_k8s_prereqs.sh
 
 # Setup kubernetes config - must be done as a normal user...
 mkdir -p $HOME/.kube

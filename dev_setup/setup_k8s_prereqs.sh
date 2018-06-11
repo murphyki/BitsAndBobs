@@ -1,9 +1,9 @@
 #!/bin/bash -eux
 
-# See https://kubernetes.io/docs/tasks/tools/install-kubeadm/
-
 # Install prerequisites
-source ./setup_prereqs
+source ./setup_prereqs.sh
+
+# See https://kubernetes.io/docs/tasks/tools/install-kubeadm/
 
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 
