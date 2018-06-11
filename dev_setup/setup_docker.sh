@@ -3,6 +3,10 @@
 # Can pass in the specific version of docker or use the default
 # which matches kubernetes supported version...
 DOCKER_VERSION=${1:-"17.03"}
+DOCKER_PACKAGE=${2:-$(apt-cache madison docker-ce | grep $DOCKER_VERSION | head -1 | awk '{print $3}')}
+DOCKER_PACKAGE=${DOCKER_PACKAGE:-"hello"}
+
+LINUX_CODENAME=$(lsb_release -cs)
 
 echo "Installing docker version $DOCKER_VERSION"
 
@@ -11,13 +15,13 @@ source ./setup_prereqs.sh
 
 # Setup docker repo
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") $(lsb_release -cs) stable"
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $LINUX_CODENAME stable"
 
 sudo apt-get update
 #sudo apt-get upgrade -y
 
 # Install docker (Community Edition)
-sudo apt-get install -y docker-ce=$(apt-cache madison docker-ce | grep $DOCKER_VERSION | head -1 | awk '{print $3}')
+sudo apt-get install -y docker-ce=$DOCKER_PACKAGE
 
 # Add the current user to the docker group
 echo "Current user is: $USER"

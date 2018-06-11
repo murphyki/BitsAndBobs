@@ -1,17 +1,33 @@
 # Setup Instructions
-The instructions below should work for any Debian based version of Linux.
+The instructions below work for Ubuntu.
+They've been tested on Ubuntu 16.04 and 18.04.
+Your mileage with other versions may vary... :)
+
+## Prerequisites
+You need a VM, you have the following choices:
+1. Use the [packer project](../packer/readme.md) to build your own custom VM.
+2. Download an ISO for the version you want to work with and install a VM in [VMware Workstation](https://www.vmware.com/products/workstation). The VM setup is super simple with Workstation. One thing though, check the date and time after installation is complete, my date and time was way off!!
+
+Note:
+- If you intend to use `minikube` as your kubernetes environment then you need to
+ensure that your virtualization application supports nested virtualization because minikube itself runs as a VM and the VM you create must nave nested virtualization enabled. This is another reason to chose VMWare Workstation as it supports nested VMs whereas, unfortunately, VirtualBox does not
+- The packer builds enable VM virtualization by default, but if you go the ISO route you can enable nested virtualization as follows: go to `Processors` and ensure that the checkbox `Virtualize Intel VT-x/EPT or AMD-v/RVI` is ticked
 
 ## Base Environment Setup
-- First, deploy a VM using VMWare Workstation, it has to be Workstation as it supports nested VMs whereas, unfortunately, VirtualBox does not. We need nested VM capability because minikube is deployed as a VM
-- Deploy the VM from the OS ISO file, in my case this was `ubuntu-16.04.4-desktop-amd64.iso` which i downloaded from the ubuntu downloads site. The VM setup is super simple with Workstation. One thing though, check the date and time after installtion is complete, my date and time was way off!!
-- Clone this repo: `git clone https://github.com/murphyki/BitsAndBobs.git`
-- Change directory into the repo folder and: `chmod +x *.sh` all the script files
-- Execute: `./setup_dev_env.sh`
+Once you have a VM created and powered on do the following from your console of choice:
+- Ensure git is installed:
+      $ sudo apt-get install -y git
+- Clone this repo:
+      $ git clone https://github.com/murphyki/BitsAndBobs.git
+- Change directory into this repo folder and run:
+      $ chmod +x *.sh
+- Execute:
+      $ ./setup_dev_env.sh
 - Wait until script finishes, it'll take a while, 10/20 minutes
 - Give the VM a spin and make sure apps are working as expected
-- Power down the VM and edit the VM settings - go to `Processors` and ensure that the checkbox `Virtualize Intel VT-x/EPT or AMD-v/RVI` is ticked
+- Power down the VM and edit the VM settings and check that you have nested virtualization enabled:  go to `Processors` and ensure that the checkbox `Virtualize Intel VT-x/EPT or AMD-v/RVI` is ticked
 - Take a snapshot of the VM, this will be the base snapshot we can rollback to if future endeavours go pear shaped
-- Go ahead and install other apps, e.g. kubernetes, IDEs, etc
+- Go ahead and install other apps, e.g. docker, ansible AWX, kubernetes, IDEs, etc
 
 ## Docker Environment Setup
 - Change directory to the `BitsAndBobs` repo
@@ -26,6 +42,13 @@ Note:
 - As a work-around, use the `host` docker network: `docker build --network host .`
 
 ## Kubernetes Environment Setup
+For a kubernetes environment you have choices:
+1. Istall and use [minikube](https://github.com/kubernetes/minikube)  
+2. Install a single node cluster using [kubeadm](https://kubernetes.io/docs/tasks/tools/install-kubeadm/)
+
+Note: Favour a single node luster over minikube as it gives much better performance and is not as resource hungry.
+
+### Minikube Setup
 - Change directory to the `BitsAndBobs` repo
 - Execute: `./setup_k8s_minikube.sh`
 - Wait until script finishes, it'll take a while, 5/10 minutes
@@ -33,7 +56,7 @@ Note:
 - Go ahead and install other apps, e.g. ansible, AWX, etc
 
 Note:
-- Before setting up your kubernetes environment on your VM, ensure you have enabled virtualisation: go to `Processors` and check that the checkbox `Virtualize Intel VT-x/EPT or AMD-v/RVI` is ticked. We will be installing `minikube` which downloads and launches a VM and if virtualisation is not enabled for the VM this will fail. If this happens, run `minikube delete` and reinstall minikube - see `setup_k8s.sh` for instructions
+- Before setting up your minikube kubernetes environment on your VM, ensure you have enabled virtualisation: go to `Processors` and check that the checkbox `Virtualize Intel VT-x/EPT or AMD-v/RVI` is ticked. We will be installing `minikube` which downloads and launches a VM and if virtualisation is not enabled for the VM this will fail. If this happens, run `minikube delete` and reinstall minikube - see `setup_k8s.sh` for instructions
 - When building docker images to run as containers in minikube, there is a little gotcha: the images you build on your vm are not visible inside the minikube VM, so when you try to deploy pods based on your docker images the pods will fail to run with an error:
 ```
 Container image "murphyki/web-gateway" is not present with pull policy of Never
@@ -45,6 +68,9 @@ eval $(minikube docker-env)
 ```
 To see the affect of this run: `docker images` notice how your docker images are not there...
 - You now need to rebuild all your docker images again so that they are available inside the minikube VM
+
+### Single Node Cluster Setup
+to do...
 
 ## Ansible and AWX Setup
 - Change directory to the `BitsAndBobs` repo
