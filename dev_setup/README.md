@@ -27,7 +27,7 @@ Note:
 
 ## Kubernetes Environment Setup
 - Change directory to the `BitsAndBobs` repo
-- Execute: `./setup_minikube.sh`
+- Execute: `./setup_k8s_minikube.sh`
 - Wait until script finishes, it'll take a while, 5/10 minutes
 - All going well, take a snapshot of the VM
 - Go ahead and install other apps, e.g. ansible, AWX, etc
