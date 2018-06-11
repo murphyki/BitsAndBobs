@@ -16,13 +16,21 @@ ensure that your virtualization application supports nested virtualization becau
 ## Base Environment Setup
 Once you have a VM created and powered on do the following from your console of choice:
 - Ensure git is installed:
-      $ sudo apt-get install -y git
+```
+$ sudo apt-get install -y git
+```
 - Clone this repo:
-      $ git clone https://github.com/murphyki/BitsAndBobs.git
+```
+$ git clone https://github.com/murphyki/BitsAndBobs.git
+```
 - Change directory into this repo folder and run:
-      $ chmod +x *.sh
-- Execute:
-      $ ./setup_dev_env.sh
+```
+$ chmod +x *.sh
+```
+- To setup the base development environment, executr:
+```
+$ ./setup_dev_env.sh
+```
 - Wait until script finishes, it'll take a while, 10/20 minutes
 - Give the VM a spin and make sure apps are working as expected
 - Power down the VM and edit the VM settings and check that you have nested virtualization enabled:  go to `Processors` and ensure that the checkbox `Virtualize Intel VT-x/EPT or AMD-v/RVI` is ticked
@@ -31,8 +39,14 @@ Once you have a VM created and powered on do the following from your console of 
 
 ## Docker Environment Setup
 - Change directory to the `BitsAndBobs/dev_setup` repo
-- Execute: `./setup_docker.sh`
-  - If using ubuntu 18.04 issue the following command instead: `./setup_docker.sh 18.05`
+- To install docker, execute:
+```
+$ ./setup_docker.sh
+```
+  - If using ubuntu 18.04 issue the following command instead: 
+```
+$ ./setup_docker.sh 18.05
+```
   - This is because docker 17.03 is not yet available on ubuntu 18.04
 - Wait until script finishes, it'll take a while, 2/3 minutes
 - Log out of the VM and log back in so that docker related changes to groups can take affect
@@ -52,7 +66,10 @@ Note: Favour a single node luster over minikube as it gives much better performa
 
 ### Minikube Setup
 - Change directory to the `BitsAndBobs/dev_setup` repo
-- Execute: `./setup_k8s_minikube.sh`
+- To setup minikube, execute: 
+```
+$ ./setup_k8s_minikube.sh
+```
 - Wait until script finishes, it'll take a while, 5/10 minutes
 - All going well, take a snapshot of the VM
 - Go ahead and install other apps, e.g. ansible, AWX, etc
@@ -73,10 +90,16 @@ To see the affect of this run: `docker images` notice how your docker images are
 
 ### Single Node Cluster Setup
 - Change directory to the `BitsAndBobs/dev_setup` repo
-- Execute: `./setup_k8s_single_node_cluster.sh`
+- To setup the single node cluster, execute: 
+```
+$ ./setup_k8s_single_node_cluster.sh
+```
   - Note the join token from the output in case we want to add some worker nodes later, but right now our master node will also act as a worker node...
 - Wait until script finishes, it'll take a few mins, 2/3 minutes
-- Deploy the kubernetes dashboard:  `./setup_k8s_dashboard.sh`
+- Deploy the kubernetes dashboard: 
+```
+$ ./setup_k8s_dashboard.sh
+```
   - Note the token dumped to the console, we can use that when asked to login to the dashboard later
 - All going well, take a snapshot of the VM
 - Go ahead and install other apps, e.g. ansible, AWX, etc
@@ -84,7 +107,10 @@ To see the affect of this run: `docker images` notice how your docker images are
 
 ## Ansible and AWX Setup
 - Change directory to the `BitsAndBobs/dev_setup` repo
-- Execute: `./setup_ansible_awx.sh`
+- To install ansible and AWC, execute: 
+```
+$ ./setup_ansible_awx.sh
+```
 - Wait until script finishes, it'll take a while, 4/5 minutes
 - At this point we have ansibe installed and the AWX github repo cloned _but_ to complete the AWX setup we need to edit some of the setings in the `awx/inventory` file
 - To complete the AWX setup, do the following:
