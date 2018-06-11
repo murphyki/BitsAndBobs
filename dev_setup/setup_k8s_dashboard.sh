@@ -1,7 +1,10 @@
 #!/bin/bash -eux
 
+# See https://github.com/kubernetes/dashboard
+
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
 
+# See https://github.com/kubernetes/dashboard/wiki/Creating-sample-user
 kubectl create -f service-account.yaml
 kubectl create -f cluster-role-binding.yaml
 
