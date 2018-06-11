@@ -7,7 +7,7 @@ DOCKER_VERSION=${1:-"17.03"}
 echo "Installing docker version $DOCKER_VERSION"
 
 # Install prerequisites
-source ./setup_prereqs
+source ./setup_prereqs.sh
 
 # Setup docker repo
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
