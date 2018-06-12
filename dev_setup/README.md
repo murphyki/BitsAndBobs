@@ -43,11 +43,10 @@ $ ./setup_dev_env.sh
 ```
 $ ./setup_docker.sh
 ```
-  - If using ubuntu 18.04 issue the following command instead: 
+  - If using ubuntu 18.04 issue the following command instead as docker 17.03 is not yet available in the ubuntu 18.04 package repos: 
 ```
 $ ./setup_docker.sh 18.05
 ```
-  - This is because docker 17.03 is not yet available on ubuntu 18.04
 - Wait until script finishes, it'll take a while, 2/3 minutes
 - Log out of the VM and log back in so that docker related changes to groups can take affect
 - All going well, take a snapshot of the VM
