@@ -111,6 +111,12 @@ $ watch kubectl get pods --all-namespaces
 - All going well, take a snapshot of the VM
 - Go ahead and install other apps, e.g. ansible, AWX, etc
 
+#### Service Mesh Setup: istio
+You may want to install a [Service Mesh](https://istio.io/docs/concepts/what-is-istio/overview/) into your cluster, to do that execute:
+```
+$ ./setup_istio.sh
+```
+
 
 ## Ansible and AWX Setup
 - Change directory to the `BitsAndBobs/dev_setup` repo
