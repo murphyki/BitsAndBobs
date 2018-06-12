@@ -5,7 +5,7 @@ Your mileage with other versions may vary... :)
 
 ## Prerequisites
 You need a VM, you have the following choices:
-1. Use the [packer project](../packer/readme.md) to build your own custom VM.
+1. Use packer to build your own custom VM.
 2. Download an ISO for the version you want to work with and install a VM in [VMware Workstation](https://www.vmware.com/products/workstation). The VM setup is super simple with Workstation. One thing though, check the date and time after installation is complete, my date and time was way off!!
 
 Note:
@@ -62,7 +62,8 @@ For a kubernetes environment you have choices:
 1. Install and use [minikube](https://github.com/kubernetes/minikube)  
 2. Install a single node cluster using [kubeadm](https://kubernetes.io/docs/tasks/tools/install-kubeadm/)
 
-Note: Favour a single node luster over minikube as it gives much better performance and is not as resource hungry.
+Note: 
+- Favour a single node cluster over minikube as it gives much better performance and is not as resource hungry.
 
 ### Minikube Setup
 - Change directory to the `BitsAndBobs/dev_setup` repo
@@ -89,6 +90,7 @@ To see the affect of this run: `docker images` notice how your docker images are
 - You now need to rebuild all your docker images again so that they are available inside the minikube VM
 
 ### Single Node Cluster Setup
+Assumes you have already installed docker. If not, see [Docker Environment Setup](#docker-environment-setup)
 - Change directory to the `BitsAndBobs/dev_setup` repo
 - To setup the single node cluster, execute: 
 ```
@@ -101,6 +103,11 @@ $ ./setup_k8s_single_node_cluster.sh
 $ ./setup_k8s_dashboard.sh
 ```
   - Note the token dumped to the console, we can use that when asked to login to the dashboard later
+- watch the pods spin up:
+```
+$ watch kubectl get pods --all-namespaces
+```
+- Once all pods are spun up you are ready to deploy some apps
 - All going well, take a snapshot of the VM
 - Go ahead and install other apps, e.g. ansible, AWX, etc
 
