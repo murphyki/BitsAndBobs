@@ -106,4 +106,11 @@ kubectl run hazelcast --image=hazelcast/hazelcast --port=5701
 # the hazelcast docker image has been moved to hazelcast/hazelcast (https://hub.docker.com/r/hazelcast/hazelcast
  
 kubectl describe pod
+
+kubectl scale --replicas=4 deployment/tomcat-deployment 
+ 
+kubectl expose deployment tomcat-deployment --type=NodePort
+kubectl expose deployment tomcat-deployment --type=LoadBalancer --port=8080 --target-port=8080 --name tomcat-load-balancer
+ 
+kubectl describe services tomcat-load-balancer
 ```
