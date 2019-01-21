@@ -84,6 +84,7 @@ Run below command instead.
 If you are not running Linux machines, Install VirtualBox on the VM.
 
 ## Sone kubectl Commands
+```
 kubectl get pods
 kubectl get pods [pod name]
  
@@ -105,4 +106,4 @@ kubectl run hazelcast --image=hazelcast/hazelcast --port=5701
 # the hazelcast docker image has been moved to hazelcast/hazelcast (https://hub.docker.com/r/hazelcast/hazelcast
  
 kubectl describe pod
-
+```
