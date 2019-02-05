@@ -85,9 +85,23 @@ If you are not running Linux machines, Install VirtualBox on the VM.
 
 ## Sone kubectl Commands
 ```
+kubectl create namespace <namespace name>
+kubectl create namespace cpu-limited-tomcat
+kubectl create -f ./cpu-limits.yaml —namespace=cpu-limited-tomcat (from the GitHub repo directory for this lecture)
+kubectl create secret generic db-user-pass --from-file=./username.txt --from-file=./password.txt
+kubectl create secret generic mysql-pass --from-literal=password=PASSWORDS_IN_PLAIN_TEXT_ARE_BAD_WE_WILL_SHOW_SOMETHING_MORE_SECURE_LATER
+
+kubectl apply -f ./tomcat-deployment.yaml —namespace=cpu-limited-tomcat (from the GitHub repo directory for this lecture)
+
+kubectl describe pod
+kubectl describe services tomcat-load-balancer
+kubectl describe deployment tomcat-deployment —namespace=cpu-limited-tomcat
+
+kubectl get deployments
+kubectl get namespace
 kubectl get pods
 kubectl get pods [pod name]
-kubectl get deployments
+kubectl get secret
 
 kubectl expose <type name> <identifier/name> [—port=external port] [—target-port=container-port [—type=service-type]
 kubectl expose deployment tomcat-deployment --type=NodePort
@@ -106,13 +120,12 @@ kubectl label pods <pod name> healthy=fasle
  
 kubectl run <name> —image=image
 kubectl run hazelcast --image=hazelcast/hazelcast --port=5701
- 
-kubectl describe pod
-kubectl describe services tomcat-load-balancer
 
-kubectl scale --replicas=4 deployment/tomcat-deployment 
-
-kubectl rollout status
 kubectl set image
+kubectl set image deployment/<name> -n <namespace> <container>=<image_version>
+
+kubectl autoscale deployment wordpress --cpu-percent=50 --min=1 --max=5
+kubectl scale --replicas=4 deployment/tomcat-deployment 
+kubectl rollout status
 kubectl rollout history
 ```
