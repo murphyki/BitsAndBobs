@@ -87,10 +87,13 @@ If you are not running Linux machines, Install VirtualBox on the VM.
 ```
 kubectl get pods
 kubectl get pods [pod name]
- 
+kubectl get deployments
+
 kubectl expose <type name> <identifier/name> [—port=external port] [—target-port=container-port [—type=service-type]
 kubectl expose deployment tomcat-deployment --type=NodePort
- 
+kubectl expose deployment tomcat-deployment --type=NodePort
+kubectl expose deployment tomcat-deployment --type=LoadBalancer --port=8080 --target-port=8080 --name tomcat-load-balancer
+
 kubectl port-forward <pod name> [LOCAL_PORT:]REMOTE_PORT]
  
 kubectl attach <pod name> -c <container>
@@ -103,18 +106,12 @@ kubectl label pods <pod name> healthy=fasle
  
 kubectl run <name> —image=image
 kubectl run hazelcast --image=hazelcast/hazelcast --port=5701
-# the hazelcast docker image has been moved to hazelcast/hazelcast (https://hub.docker.com/r/hazelcast/hazelcast
  
 kubectl describe pod
-
-kubectl scale --replicas=4 deployment/tomcat-deployment 
- 
-kubectl expose deployment tomcat-deployment --type=NodePort
-kubectl expose deployment tomcat-deployment --type=LoadBalancer --port=8080 --target-port=8080 --name tomcat-load-balancer
- 
 kubectl describe services tomcat-load-balancer
 
-kubectl get deployments
+kubectl scale --replicas=4 deployment/tomcat-deployment 
+
 kubectl rollout status
 kubectl set image
 kubectl rollout history
