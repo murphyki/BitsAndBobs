@@ -83,7 +83,7 @@ Run below command instead.
 ```
 If you are not running Linux machines, Install VirtualBox on the VM.
 
-## Sone kubectl Commands
+## Some kubectl Commands
 ```
 kubectl create namespace <namespace name>
 kubectl create namespace cpu-limited-tomcat
