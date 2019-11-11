@@ -69,8 +69,8 @@ curl -s "https://get.sdkman.io" | bash
 source ~/.bashrc
 
 # Install Maven and Java
-sdk install maven
-sdk install java 8.0.192-zulu
+#sdk install maven
+#sdk install java 8.0.192-zulu
 
 # Install tools
 sudo apt-get install -y terminator
