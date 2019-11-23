@@ -34,6 +34,7 @@ then
     sudo apt-get install -y php-cli
     sudo apt-get install -y php-zip
     sudo apt-get install -y php-mbstring
+    sudo apt-get install -y php-bcmath
     sudo apt-get install -y php-gd
     sudo apt-get install -y php-xml
 else
